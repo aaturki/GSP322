@@ -9,9 +9,9 @@ do echo "waiting project" && sleep 2;
 done
 
 gcloud compute firewall-rules delete "open-access" --quiet
-gcloud compute instances start bastion --zone=us-us-east1-b
-gcloud compute instances add-tags bastion --tags=bastion --zone=us-us-east1-b
-gcloud compute instances add-tags juice-shop --tags=juice-shop --zone=us-us-east1-b
+gcloud compute instances start bastion --zone=us-east1-b
+gcloud compute instances add-tags bastion --tags=bastion --zone=us-east1-b
+gcloud compute instances add-tags juice-shop --tags=juice-shop --zone=us-east1-b
 
 gcloud compute firewall-rules create "permit-ssh-iap-ingress-ql-395" --network=acme-vpc --target-tags=bastion --allow=tcp:22 --source-ranges="35.235.240.0/20" --description="Narrowing SSH traffic"
 
